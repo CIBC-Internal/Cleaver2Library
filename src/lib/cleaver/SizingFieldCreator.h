@@ -55,7 +55,7 @@
 #include "BoundingBox.h"
 
 
-namespace cleaver
+namespace cleaver2
 {
 
 class Voxel
@@ -75,7 +75,7 @@ public:
 
     void init(int l, int m, int n);
     ScalarField<float>*  convertToFloatField(float factor,
-      const cleaver::vec3 &padding, const cleaver::vec3 &offset);
+      const cleaver2::vec3 &padding, const cleaver2::vec3 &offset);
 
     std::vector<std::vector<std::vector<bool> > > known;
     std::vector<std::vector<std::vector<double> > > dist;

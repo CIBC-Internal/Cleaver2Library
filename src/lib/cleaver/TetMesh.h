@@ -60,7 +60,7 @@
 #define EDGES_PER_TET 6
 #define FACES_PER_TET 4
 
-namespace cleaver
+namespace cleaver2
 {
 //              BCCLattice   BCCOctree
 enum MeshType { Regular,    Structured };
@@ -153,7 +153,7 @@ public:
     Tet* oppositeTetAcrossFace(Tet *tet, HalfFace *face);
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // TETMESH_H
 

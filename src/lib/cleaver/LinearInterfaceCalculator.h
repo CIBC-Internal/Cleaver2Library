@@ -47,7 +47,7 @@
 #include "vec3.h"
 #include "Vertex.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class LinearInterfaceCalculator : public InterfaceCalculator
@@ -66,6 +66,6 @@ class LinearInterfaceCalculator : public InterfaceCalculator
     void forcePointIntoTriangle(vec3 a, vec3 b, vec3 c, vec3 &p);
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // LINEAR_INTERFACE_CALCULATOR_H

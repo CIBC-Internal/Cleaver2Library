@@ -41,14 +41,14 @@
 #include "Volume.h"
 #include "BoundingBox.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 Volume::Volume()
 {
 }
 
-Volume::Volume(const cleaver::Volume &volume)
+Volume::Volume(const cleaver2::Volume &volume)
 {
     this->m_bounds      = volume.m_bounds;
     this->m_sizingField = volume.m_sizingField;
@@ -188,7 +188,7 @@ void Volume::addMaterial(AbstractScalarField *field)
 
 void Volume::removeMaterial(AbstractScalarField *field)
 {
-    std::vector<cleaver::AbstractScalarField*>::iterator iter;
+    std::vector<cleaver2::AbstractScalarField*>::iterator iter;
 
     for(iter = m_valueFields.begin(); iter != m_valueFields.end(); iter++)
     {

@@ -75,7 +75,7 @@ using namespace std;
 #endif
 
 
-namespace cleaver
+namespace cleaver2
 {
   // order of vertices for each face
   // the way this is ordered, a tet doesn't need vertex pointers directly
@@ -1218,22 +1218,22 @@ namespace cleaver
   {
 
     switch(format) {
-    case cleaver::Tetgen:
+    case cleaver2::Tetgen:
       writeNodeEle(filename, verbose);
       break;
-    case cleaver::Scirun:
+    case cleaver2::Scirun:
       writePtsEle(filename, verbose);
       break;
-    case cleaver::Matlab:
+    case cleaver2::Matlab:
       writeMatlab(filename, verbose);
       break;
-    case  cleaver::VtkUSG:
+    case  cleaver2::VtkUSG:
       writeVtkUnstructuredGrid(filename, verbose);
       break;
-    case  cleaver::VtkPoly:
+    case  cleaver2::VtkPoly:
       writeVtkPolyData(filename, verbose);
       break;
-    case  cleaver::PLY:
+    case  cleaver2::PLY:
       writePly(filename, verbose);
       break;
     default: {

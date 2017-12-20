@@ -49,7 +49,7 @@
 
 using namespace std;
 
-namespace cleaver
+namespace cleaver2
 {
   const std::string VersionNumber = "2.3";
   const std::string VersionDate = __DATE__;
@@ -107,7 +107,7 @@ namespace cleaver
       fields.push_back(floatField);
     }
 
-    cleaver::Volume *floatVolume = new Volume(fields);
+    cleaver2::Volume *floatVolume = new Volume(fields);
     floatVolume->setName(base_volume->name());
 
     return floatVolume;

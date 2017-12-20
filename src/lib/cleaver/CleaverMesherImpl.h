@@ -16,7 +16,7 @@
 #include "InterfaceCalculator.h"
 #include "ViolationChecker.h"
 
-namespace cleaver {
+namespace cleaver2 {
 
 class CleaverMesherImp
 {
@@ -114,6 +114,6 @@ public:
     TetMesh *m_mesh;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // __CLEAVERMESHIMP_H__

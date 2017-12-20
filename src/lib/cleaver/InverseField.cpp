@@ -38,7 +38,7 @@
 
 #include "InverseField.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 InverseScalarField::InverseScalarField(const AbstractScalarField *field) : m_field(field)

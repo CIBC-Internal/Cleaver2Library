@@ -40,7 +40,7 @@
 
 #include "Vertex.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 

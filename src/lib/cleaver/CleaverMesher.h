@@ -3,7 +3,7 @@
 
 #include "Octree.h"
 
-namespace cleaver {
+namespace cleaver2 {
 
 class Volume;
 class TetMesh;

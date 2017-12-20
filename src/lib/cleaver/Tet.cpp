@@ -41,7 +41,7 @@
 #include "Tet.h"
 #include <cmath>
 
-namespace cleaver
+namespace cleaver2
 {
 
 Tet::Tet() : quadruple(nullptr), mat_label(-1), output(false), evaluated(false), flagged(false)
@@ -181,4 +181,4 @@ bool Tet::contains(Vertex *v) const
          verts[3] == v;
 }
 
-} // namespace cleaver
+} // namespace cleaver2

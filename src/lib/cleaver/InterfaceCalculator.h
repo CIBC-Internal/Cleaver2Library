@@ -47,7 +47,7 @@
 #include "TetMesh.h"
 #include "AbstractVolume.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class InterfaceCalculator
@@ -59,6 +59,6 @@ class InterfaceCalculator
     virtual void computeQuadrupleForTet(Tet *tet) = 0;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // INTERFACE_CALCULATOR_H

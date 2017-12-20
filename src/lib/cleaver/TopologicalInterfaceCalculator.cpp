@@ -47,7 +47,7 @@ int SolveQuadric(double c[3], double s[2]);
 int SolveCubic(double c[4], double s[3]);
 void clipRoots(double s[3], int &num_roots);
 
-namespace cleaver
+namespace cleaver2
 {
 // TODO(jonbronson): Move exterior interface check into a separate
 // BoundaryInterfaceCalculator method that implements the interface.
@@ -900,4 +900,4 @@ void TopologicalInterfaceCalculator::forcePointIntoTriangle(
 
 
 
-} // namespace cleaver
+} // namespace cleaver2

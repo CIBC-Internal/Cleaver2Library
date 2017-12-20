@@ -43,7 +43,7 @@
 
 #include "Vertex.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class HalfEdge : public Geometry
@@ -100,6 +100,6 @@ public:
     }
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // HALFEDGE_H_

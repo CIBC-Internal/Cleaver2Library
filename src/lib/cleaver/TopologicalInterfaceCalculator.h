@@ -47,7 +47,7 @@
 #include "vec3.h"
 #include "Vertex.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class TopologicalInterfaceCalculator : public InterfaceCalculator
@@ -67,6 +67,6 @@ class TopologicalInterfaceCalculator : public InterfaceCalculator
     void computeLagrangePolynomial(const vec3 &p1, const vec3 &p2, const vec3 &p3, const vec3 &p4, double coefficients[4]);
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // LINEAR_INTERFACE_CALCULATOR_H

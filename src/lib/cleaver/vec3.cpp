@@ -46,7 +46,7 @@
 #include <sstream>
 
 using namespace std;
-namespace cleaver
+namespace cleaver2
 {
 
 // static variables

@@ -45,7 +45,7 @@
 #include <list>
 #include "BoundingBox.h"
 
-namespace cleaver
+namespace cleaver2
 {
     class BoundingBox;
     class Octree;

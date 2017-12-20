@@ -9,7 +9,7 @@
 #include <queue>
 #include <stack>
 
-namespace cleaver
+namespace cleaver2
 {
 
 namespace{
@@ -164,14 +164,14 @@ public:
 
 
 
-    cleaver::TetMesh *m_mesh;
+    cleaver2::TetMesh *m_mesh;
 
     Octree *m_tree;
     std::map<vec3, Vertex*, vec3order> m_vertex_tracker;
     std::map<vec3,    vec3, vec3order> m_warp_tracker;
 };
 
-OctreeMesherImp::OctreeMesherImp(const cleaver::AbstractScalarField *sizing_field) :
+OctreeMesherImp::OctreeMesherImp(const cleaver2::AbstractScalarField *sizing_field) :
     m_mesh(nullptr), m_tree(nullptr), m_sizing_field(sizing_field), m_sizing_oracle(nullptr)
 {
 }
@@ -703,7 +703,7 @@ Vertex* OctreeMesherImp::vertexForPosition(const vec3 &position, bool create)
 
 
 //---------------------- public interface ----------------------
-OctreeMesher::OctreeMesher(const cleaver::AbstractScalarField *sizing_field) :
+OctreeMesher::OctreeMesher(const cleaver2::AbstractScalarField *sizing_field) :
     m_pimpl(new OctreeMesherImp(sizing_field))
 {
 }
@@ -712,7 +712,7 @@ OctreeMesher::~OctreeMesher()
 {
 }
 
-void OctreeMesher::setSizingField(const cleaver::AbstractScalarField *sizing_field)
+void OctreeMesher::setSizingField(const cleaver2::AbstractScalarField *sizing_field)
 {
     m_pimpl->m_sizing_field = sizing_field;
     // todo: consider doing some validation here, return error message
@@ -751,7 +751,7 @@ void OctreeMesher::createMesh()
 
 }
 
-cleaver::TetMesh* OctreeMesher::getMesh()
+cleaver2::TetMesh* OctreeMesher::getMesh()
 {
     return m_pimpl->m_mesh;
 }
@@ -759,4 +759,4 @@ cleaver::TetMesh* OctreeMesher::getMesh()
 
 
 
-} // namespace cleaver
+} // namespace cleaver2

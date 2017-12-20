@@ -43,7 +43,7 @@
 #include "Plane.h"
 #include <cmath>
 
-namespace cleaver
+namespace cleaver2
 {
 
 SimpleInterfaceCalculator::SimpleInterfaceCalculator(
@@ -148,4 +148,4 @@ void SimpleInterfaceCalculator::computeQuadrupleForTet(Tet *tet) {
   tet->quadruple->violating = false;
 }
 
-} // namespace cleaver
+} // namespace cleaver2

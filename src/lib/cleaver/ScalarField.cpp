@@ -42,11 +42,11 @@
 #include "vec3.h"
 
 
-namespace cleaver
+namespace cleaver2
 {
 
 template <typename T>
-cleaver::CenteringType ScalarField<T>::DefaultCenteringType = cleaver::CellCentered;
+cleaver2::CenteringType ScalarField<T>::DefaultCenteringType = cleaver2::CellCentered;
 
 template <typename T>
 ScalarField<T>::ScalarField(T *data, int w, int h, int d)

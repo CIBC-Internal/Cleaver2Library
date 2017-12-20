@@ -1,7 +1,7 @@
 #include "BoundingBox.h"
 #include <algorithm>
 
-namespace cleaver
+namespace cleaver2
 {
 
 vec3 BoundingBox::center() const

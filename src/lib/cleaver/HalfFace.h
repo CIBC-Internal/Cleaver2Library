@@ -45,7 +45,7 @@
 #include "HalfEdge.h"
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class HalfFace : public Geometry
@@ -77,6 +77,6 @@ public:
     }
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // HALFFACE_H_

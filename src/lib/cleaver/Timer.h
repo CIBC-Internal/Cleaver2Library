@@ -9,7 +9,7 @@
 #ifndef CLEAVER_TIMER_H
 #define CLEAVER_TIMER_H
 
-namespace cleaver
+namespace cleaver2
 {
 class TimerImp;
 

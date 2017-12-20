@@ -47,7 +47,7 @@
 #include "vec3.h"
 #include "Vertex.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 /**
@@ -68,6 +68,6 @@ class SimpleInterfaceCalculator : public InterfaceCalculator
     AbstractVolume *m_volume;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // SIMPLE_INTERFACE_CALCULATOR_H

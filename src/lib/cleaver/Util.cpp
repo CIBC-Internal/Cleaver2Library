@@ -43,7 +43,7 @@
 
 using namespace std;
 
-namespace cleaver
+namespace cleaver2
 {
 
 
@@ -267,4 +267,4 @@ Json::Value tet_to_json(Tet *tet, TetMesh *mesh, bool includeInterfaces) {
 }
 
 
-} // namespace cleaver
+} // namespace cleaver2

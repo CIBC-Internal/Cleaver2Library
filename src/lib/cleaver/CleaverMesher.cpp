@@ -27,7 +27,7 @@
 #include <cstdlib>
 
 
-namespace cleaver
+namespace cleaver2
 {
   static const double DEFAULT_ALPHA_LONG = 0.357;
   static const double DEFAULT_ALPHA_SHORT = 0.203;
@@ -218,7 +218,7 @@ namespace cleaver
   //========================================
   TetMesh* CleaverMesher::createBackgroundMesh(bool verbose)
   {
-    cleaver::Timer timer;
+    cleaver2::Timer timer;
     timer.start();
     TetMesh* m = m_pimpl->createBackgroundMesh(verbose);
     timer.stop();
@@ -321,7 +321,7 @@ namespace cleaver
         status.printStatus();
       }
       // Get Vertex
-      cleaver::Vertex *vertex = m_bgMesh->verts[v];
+      cleaver2::Vertex *vertex = m_bgMesh->verts[v];
 
       // Grab Material Label
       vertex->label = m_volume->maxAt(vertex->pos());
@@ -573,7 +573,7 @@ namespace cleaver
     {// DEBUG TEST
       for (auto &entry : m_bgMesh->halfEdges)
       {
-        cleaver::HalfEdge *edge = entry.second;
+        cleaver2::HalfEdge *edge = entry.second;
         edge->evaluated = false;
       }
     }
@@ -583,7 +583,7 @@ namespace cleaver
     //---------------------------------------
     for (auto &entry : m_bgMesh->halfEdges)
     {
-      cleaver::HalfEdge *edge = entry.second;
+      cleaver2::HalfEdge *edge = entry.second;
 
       if (!edge->evaluated) {
         m_interfaceCalculator->computeCutForEdge(edge);
@@ -600,7 +600,7 @@ namespace cleaver
     {// DEBUG TEST
       for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
       {
-        cleaver::HalfFace *face = &m_bgMesh->halfFaces[f];
+        cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
         face->evaluated = false;
       }
     }
@@ -610,7 +610,7 @@ namespace cleaver
     //--------------------------------------
     for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
     {
-      cleaver::HalfFace *face = &m_bgMesh->halfFaces[f];
+      cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
 
       if (!face->evaluated) {
         m_interfaceCalculator->computeTripleForFace(face);
@@ -631,7 +631,7 @@ namespace cleaver
     //-------------------------------------
     for (unsigned int t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      cleaver::Tet *tet = m_bgMesh->tets[t];
+      cleaver2::Tet *tet = m_bgMesh->tets[t];
 
       //if(!tet->evaluated){
       m_interfaceCalculator->computeQuadrupleForTet(tet);
@@ -673,7 +673,7 @@ namespace cleaver
     {// DEBUG TEST
       for (auto &entry : m_bgMesh->halfEdges)
       {
-        cleaver::HalfEdge *edge = entry.second;
+        cleaver2::HalfEdge *edge = entry.second;
         edge->evaluated = false;
         edge->mate->evaluated = false;
       }
@@ -684,7 +684,7 @@ namespace cleaver
     //----------------------------------------------
     for (auto &entry : m_bgMesh->halfEdges)
     {
-      cleaver::HalfEdge *edge = entry.second;
+      cleaver2::HalfEdge *edge = entry.second;
 
       if (!edge->evaluated) {
         m_interfaceCalculator->computeCutForEdge(edge);
@@ -702,7 +702,7 @@ namespace cleaver
     {// DEBUG TEST
       for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
       {
-        cleaver::HalfFace *face = &m_bgMesh->halfFaces[f];
+        cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
         face->evaluated = false;
       }
     }
@@ -712,7 +712,7 @@ namespace cleaver
     //--------------------------------------
     for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
     {
-      cleaver::HalfFace *face = &m_bgMesh->halfFaces[f];
+      cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
 
       if (!face->evaluated) {
         //m_interfaceCalculator->computeTripleForFace(face);
@@ -732,7 +732,7 @@ namespace cleaver
     //-------------------------------------
     for (unsigned int t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      cleaver::Tet *tet = m_bgMesh->tets[t];
+      cleaver2::Tet *tet = m_bgMesh->tets[t];
 
       //if(!tet->evaluated){
       m_interfaceCalculator->computeQuadrupleForTet(tet);
@@ -802,7 +802,7 @@ namespace cleaver
       if (verbose) {
         status.printStatus();
       }
-      cleaver::Tet *tet = m_bgMesh->tets[t];
+      cleaver2::Tet *tet = m_bgMesh->tets[t];
 
       //------------------------------
       // if no quad, start generalization
@@ -991,7 +991,7 @@ namespace cleaver
 
     for (unsigned int t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      cleaver::Tet *tet = m_bgMesh->tets[t];
+      cleaver2::Tet *tet = m_bgMesh->tets[t];
       bool case_is_v2 = false;
 
       //------------------------------
@@ -2535,7 +2535,7 @@ namespace cleaver
       if (verbose) {
         status.printStatus();
       }
-      cleaver::HalfFace *face = &m_bgMesh->halfFaces[f];
+      cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
 
       if (face->triple && face->triple->order() == Order::TRIP)
         m_violationChecker->checkIfTripleViolatesEdges(face);
@@ -2546,7 +2546,7 @@ namespace cleaver
       if (verbose) {
         status.printStatus();
       }
-      cleaver::Tet *tet = m_bgMesh->tets[t];
+      cleaver2::Tet *tet = m_bgMesh->tets[t];
       if (tet->quadruple && tet->quadruple->order() == Order::QUAD)
         m_violationChecker->checkIfQuadrupleViolatesEdges(tet);
     }

@@ -4,7 +4,7 @@
 #include "AbstractField.h"
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class AbstractScalarField : public AbstractField<double>

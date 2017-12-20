@@ -47,7 +47,7 @@
 #include "TetMesh.h"
 #include "Tet.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class LinearViolationChecker : public ViolationChecker
@@ -66,6 +66,6 @@ class LinearViolationChecker : public ViolationChecker
     TetMesh *m_mesh;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // LINEAR_VIOLATION_CHECKER_H_

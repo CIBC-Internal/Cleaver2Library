@@ -40,7 +40,7 @@
 
 #include "Face.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 Face::Face() : normal(0,0,0)
@@ -52,4 +52,4 @@ Face::Face() : normal(0,0,0)
 
 Face::~Face() {}
 
-} // namespace cleaver
+} // namespace cleaver2

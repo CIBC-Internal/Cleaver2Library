@@ -43,7 +43,7 @@
 #include "Plane.h"
 #include <cmath>
 
-namespace cleaver
+namespace cleaver2
 {
 // TODO(jonbronson): Move exterior interface check into a separate
 // BoundaryInterfaceCalculator method that implements the interface.
@@ -638,4 +638,4 @@ void LinearInterfaceCalculator::forcePointIntoTriangle(
 }
 
 
-} // namespace cleaver
+} // namespace cleaver2

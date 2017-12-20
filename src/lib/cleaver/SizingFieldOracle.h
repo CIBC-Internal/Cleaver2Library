@@ -43,7 +43,7 @@
 #include "ScalarField.h"
 #include "Octree.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class SizingFieldOracle
@@ -75,6 +75,6 @@ protected:
     ConstructionType m_constructionType;
 };
 
-} // namespace Cleaver
+} // namespace cleaver2
 
 #endif // SIZINGFIELDORACLE_H

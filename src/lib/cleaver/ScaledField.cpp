@@ -38,7 +38,7 @@
 
 #include "ScaledField.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 template <typename T>

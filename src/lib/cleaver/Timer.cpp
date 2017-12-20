@@ -70,7 +70,7 @@ int64_t GetTime()
 
 }
 
-namespace cleaver
+namespace cleaver2
 {
 
 class TimerImp
@@ -124,4 +124,4 @@ double Timer::time() const
     }
 }
 
-} // namespace cleaver
+} // namespace cleaver2

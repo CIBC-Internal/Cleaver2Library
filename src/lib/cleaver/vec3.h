@@ -57,7 +57,7 @@
 #undef max
 #endif
 
-namespace cleaver
+namespace cleaver2
 {
 
 class vec3

@@ -51,7 +51,7 @@
 #include <exception>
 
 
-namespace cleaver
+namespace cleaver2
 {
   std::string idForEdge(HalfEdge *edge);
   std::string idForEdge(HalfFace *face);

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <assert.h>
 
-namespace cleaver
+namespace cleaver2
 {
 
 Matrix3x3::Matrix3x3()
@@ -167,4 +167,4 @@ Matrix3x3 operator-(const Matrix3x3 &A, const Matrix3x3 &B)
     return R;
 }
 
-} // namespace Cleaver
+} // namespace cleaver2

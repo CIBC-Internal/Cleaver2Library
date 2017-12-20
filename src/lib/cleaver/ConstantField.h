@@ -44,7 +44,7 @@
 #include "ScalarField.h"
 #include "BoundingBox.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 template <typename T>
@@ -55,8 +55,8 @@ public:
     ConstantField(T value, int w, int h, int d);
     void setValue(T value);
     virtual double valueAt(double x, double y, double z) const;
-    virtual double valueAt(const cleaver::vec3 &x) const;
-    virtual cleaver::BoundingBox bounds() const;
+    virtual double valueAt(const cleaver2::vec3 &x) const;
+    virtual cleaver2::BoundingBox bounds() const;
 private:
     T m_value;
     int m_w, m_h, m_d;

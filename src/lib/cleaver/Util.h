@@ -50,7 +50,7 @@
 #include <exception>
 
 
-namespace cleaver
+namespace cleaver2
 {
     enum ordering { row , col };
 

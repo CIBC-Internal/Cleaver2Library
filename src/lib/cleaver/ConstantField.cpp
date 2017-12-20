@@ -1,6 +1,6 @@
 #include "ConstantField.h"
 
-namespace cleaver{
+namespace cleaver2{
 
 template <class T>
 ConstantField<T>::ConstantField(T value, const BoundingBox &bounds) :
@@ -27,13 +27,13 @@ double ConstantField<T>::valueAt(double x, double y, double z) const
 }
 
 template <class T>
-double ConstantField<T>::valueAt(const cleaver::vec3 &x) const
+double ConstantField<T>::valueAt(const cleaver2::vec3 &x) const
 {
     return m_value;
 }
 
 template <class T>
-cleaver::BoundingBox ConstantField<T>::bounds() const
+cleaver2::BoundingBox ConstantField<T>::bounds() const
 {
     return m_bounds;
 }
@@ -50,4 +50,4 @@ template class ConstantField<unsigned int>;
 template class ConstantField<long int>;
 template class ConstantField<long double>;
 
-}  // namespace Cleaver
+}  // namespace cleaver2

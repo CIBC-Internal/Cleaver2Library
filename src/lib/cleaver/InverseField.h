@@ -43,20 +43,20 @@
 #include "AbstractScalarField.h"
 #include "BoundingBox.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class InverseScalarField : public AbstractScalarField
 {
 public:
-    InverseScalarField(const cleaver::AbstractScalarField *field);
-    void setField(const cleaver::AbstractScalarField *field);
+    InverseScalarField(const cleaver2::AbstractScalarField *field);
+    void setField(const cleaver2::AbstractScalarField *field);
     virtual double valueAt(double x, double y, double z) const;
-    virtual double valueAt(const cleaver::vec3 &x) const;
-    virtual cleaver::BoundingBox bounds() const;
+    virtual double valueAt(const cleaver2::vec3 &x) const;
+    virtual cleaver2::BoundingBox bounds() const;
 
 private:
-    const cleaver::AbstractScalarField *m_field;
+    const cleaver2::AbstractScalarField *m_field;
 };
 
 }

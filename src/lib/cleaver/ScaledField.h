@@ -43,22 +43,22 @@
 #include "BoundingBox.h"
 
 
-namespace cleaver
+namespace cleaver2
 {
 
 template <typename T>
 class ScaledField : public ScalarField<T>
 {
 public:
-    ScaledField(const cleaver::ScalarField<T> *field, float scale = 1.0f);
-    void setField(const cleaver::ScalarField<T> *field);
+    ScaledField(const cleaver2::ScalarField<T> *field, float scale = 1.0f);
+    void setField(const cleaver2::ScalarField<T> *field);
     void setScale(float scale);
     virtual float valueAt(float x, float y, float z) const;
-    virtual float valueAt(const cleaver::vec3 &x) const;
-    virtual cleaver::BoundingBox bounds() const;
+    virtual float valueAt(const cleaver2::vec3 &x) const;
+    virtual cleaver2::BoundingBox bounds() const;
 
 private:
-    const cleaver::ScalarField<T> *m_field;
+    const cleaver2::ScalarField<T> *m_field;
     float m_scale;
 };
 

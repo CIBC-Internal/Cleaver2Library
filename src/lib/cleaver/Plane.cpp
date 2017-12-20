@@ -1,6 +1,6 @@
 #include "Plane.h"
 
-namespace cleaver{
+namespace cleaver2{
 
 Plane::Plane(double a, double b, double c, double d) : n(a,b,d), d(d)
 {
@@ -30,4 +30,4 @@ Plane Plane::throughPoints(const vec3 &p1, const vec3 &p2, const vec3 &p3)
     return Plane(n,d);
 }
 
-}   // namespace Cleaver
+}   // namespace cleaver2

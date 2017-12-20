@@ -55,7 +55,7 @@ std::string catIds(std::vector<int> ids) {
   return result;
 }
 
-namespace cleaver
+namespace cleaver2
 {
 	//
   Json::Value createVertexOperation(Vertex *vertex, int id) {
@@ -285,4 +285,4 @@ namespace cleaver
     return root;
   }
 
-} // namespace cleaver
+} // namespace cleaver2

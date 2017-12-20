@@ -4,21 +4,21 @@
 #include "AbstractScalarField.h"
 #include "TetMesh.h"
 
-namespace cleaver {
+namespace cleaver2 {
 
 class OctreeMesherImp;
 
 class OctreeMesher
 {
 public:
-    OctreeMesher(const cleaver::AbstractScalarField *sizing_field = nullptr);
+    OctreeMesher(const cleaver2::AbstractScalarField *sizing_field = nullptr);
     ~OctreeMesher();
 
-    void setSizingField(const cleaver::AbstractScalarField *sizing_field);
+    void setSizingField(const cleaver2::AbstractScalarField *sizing_field);
 
     void createMesh();
 
-    cleaver::TetMesh* getMesh();
+    cleaver2::TetMesh* getMesh();
 
 private:
 

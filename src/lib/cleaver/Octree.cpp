@@ -3,7 +3,7 @@
 #include "Util.h"
 #include <cstring>
 
-namespace cleaver
+namespace cleaver2
 {
 
 #ifndef nullptr

@@ -56,7 +56,7 @@
 
 using namespace std;
 
-namespace cleaver
+namespace cleaver2
 {
 #ifndef isnan
 #define isnan(x) (x)!=(x)
@@ -105,7 +105,7 @@ namespace cleaver
       dist.push_back(temp7);
   }
 
-  ScalarField<float>* VoxelMesh::convertToFloatField(float factor, const cleaver::vec3 &padding, const cleaver::vec3 &offset)
+  ScalarField<float>* VoxelMesh::convertToFloatField(float factor, const cleaver2::vec3 &padding, const cleaver2::vec3 &offset)
   {
     float *field;
     int w, h, d, i, j, k;

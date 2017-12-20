@@ -47,7 +47,7 @@
 #include "vec3.h"
 #include "Geometry.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 enum class Order : int8_t {

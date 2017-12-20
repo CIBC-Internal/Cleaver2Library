@@ -46,7 +46,7 @@
 #include "TetMesh.h"
 #include <string>
 
-namespace cleaver
+namespace cleaver2
 {
     TetMesh* cleaveMeshToVolume(const Volume *volume, TetMesh *bgMesh, bool verbose = false);
     TetMesh* createMeshFromVolume(const Volume *volume, bool verbose = false);

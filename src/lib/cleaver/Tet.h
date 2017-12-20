@@ -46,7 +46,7 @@
 #include "Tet.h"
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class Tet
@@ -76,6 +76,6 @@ public:
     bool contains(Vertex *v) const;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // TET_H

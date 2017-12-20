@@ -48,7 +48,7 @@
 #include "BoundingBox.h"
 #include "AbstractVolume.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class Volume : public AbstractVolume
@@ -85,7 +85,7 @@ private:
     std::string m_name;
     std::vector<AbstractScalarField*> m_valueFields;
     AbstractScalarField* m_sizingField;
-    cleaver::BoundingBox m_bounds;
+    cleaver2::BoundingBox m_bounds;
 };
 
 }

@@ -44,7 +44,7 @@
 #include "BoundingBox.h"
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 enum CenteringType { NodeCentered, CellCentered };

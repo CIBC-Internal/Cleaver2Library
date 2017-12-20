@@ -3,7 +3,7 @@
 
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class Matrix3x3
@@ -41,6 +41,6 @@ Matrix3x3 operator-(const Matrix3x3 &A, const Matrix3x3 &B);
 Matrix3x3 operator+(const Matrix3x3 &A, const Matrix3x3 &B);
 
 
-} // namespace Cleaver
+} // namespace cleaver2
 
 #endif // MATRIX3X3_H

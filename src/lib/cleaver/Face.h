@@ -43,7 +43,7 @@
 
 #include "vec3.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class Face
@@ -58,7 +58,7 @@ public:
     vec3 normal;
 };
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // FACE_H
 

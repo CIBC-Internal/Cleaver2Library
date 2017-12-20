@@ -41,7 +41,7 @@
 #include "LinearViolationChecker.h"
 #include <cmath>
 
-namespace cleaver
+namespace cleaver2
 {
 
 LinearViolationChecker::LinearViolationChecker(
@@ -746,4 +746,4 @@ void LinearViolationChecker::checkIfQuadrupleViolatesFaces(Tet *tet)
 }
 
 
-} // namespace cleaver
+} // namespace cleaver2

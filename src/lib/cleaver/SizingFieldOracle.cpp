@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include "ScalarField.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 SizingFieldOracle::SizingFieldOracle(const AbstractScalarField *sizingField, const BoundingBox &bounds) :
@@ -83,7 +83,7 @@ void SizingFieldOracle::sanityTest1()
 }
 
 
-void recurseCheck2(OTCell *cell, Octree *tree, const cleaver::AbstractScalarField *field)
+void recurseCheck2(OTCell *cell, Octree *tree, const cleaver2::AbstractScalarField *field)
 {
     // query cell using tree call
     OTCell *pCell = tree->getCellAtLevel(cell->xLocCode, cell->yLocCode, cell->zLocCode, cell->level);
@@ -239,7 +239,7 @@ double SizingFieldOracle::adaptCell(OTCell *cell)
                               // We need to discuss this.
 
     // TODO:   What happens if sizing field is not a FloatField ??
-    float voxel_scale = (float) ((cleaver::ScalarField<float>*)m_sizingField)->scale().x;
+    float voxel_scale = (float) ((cleaver2::ScalarField<float>*)m_sizingField)->scale().x;
 
     //if(bounds.size.x > 0.5)
     if(bounds.size.x > voxel_scale)
@@ -345,4 +345,4 @@ double SizingFieldOracle::getMinLFS(int xLocCode, int yLocCode, int zLocCode, in
 }
 
 
-} // namespace Cleaver
+} // namespace cleaver2

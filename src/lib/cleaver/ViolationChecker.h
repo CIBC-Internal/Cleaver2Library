@@ -45,7 +45,7 @@
 #include "HalfFace.h"
 #include "Tet.h"
 
-namespace cleaver
+namespace cleaver2
 {
 
 class ViolationChecker
@@ -62,6 +62,6 @@ class ViolationChecker
 };
 
 
-} // namespace cleaver
+} // namespace cleaver2
 
 #endif // VIOLATION_CHECKER_H_

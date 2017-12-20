@@ -3,7 +3,7 @@
 
 #include "vec3.h"
 
-namespace cleaver{
+namespace cleaver2{
 
 class Plane{
 public:
@@ -16,7 +16,7 @@ public:
     double d;
 };
 
-}  // namespace Cleaver
+}  // namespace cleaver2
 
 
 #endif //CLEAVER_PLANE_H
