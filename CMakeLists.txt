@@ -1,13 +1,3 @@
 cmake_minimum_required(VERSION 2.6)
 
 add_subdirectory(src)
-
-SET(SCI_CLEAVER2_INCLUDE "${CMAKE_SOURCE_DIR}/src/lib")
-SET(SCI_CLEAVER2_LIBRARY cleaver2 CACHE INTERNAL "Cleaver 2 library" FORCE)
-
-set(SCI_CLEAVER2_LIBRARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/src/lib)
-set(CLEAVER2_USE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/UseCleaver2.cmake")
-
-CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/CMake/Cleaver2Config.cmake.in"
-  "${CMAKE_BINARY_DIR}/Cleaver2Config.cmake" @ONLY IMMEDIATE)
-EXPORT(TARGETS ${SCI_CLEAVER2_LIBRARY} FILE Cleaver2Exports.cmake)

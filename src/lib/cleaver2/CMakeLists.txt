@@ -81,19 +81,16 @@ ADD_DEFINITIONS(-DTETLIBRARY)
 # Add library includes
 INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR}/include)
 
-# copy header files over
-SET(Cleaver_INSTALLED_HEADER_FILES)
-FOREACH(header_file ${Cleaver_API_HEADER_FILES})
-  # When debugging, uncomment this line
-  #MESSAGE(STATUS "Copy header file: ${header_file}")
-  GET_FILENAME_COMPONENT(file_no_path "${header_file}" NAME)
-  CONFIGURE_FILE("${header_file}"
-    "${CMAKE_BINARY_DIR}/include/Cleaver/${file_no_path}" COPYONLY IMMEDIATE)
-  SET(Cleaver_INSTALLED_HEADER_FILES
-    ${Cleaver_INSTALLED_HEADER_FILES}
-    "${CMAKE_BINARY_DIR}/include/Cleaver/${file_no_path}")
-ENDFOREACH(header_file)
+SET(SCI_CLEAVER2_INCLUDE "${CMAKE_SOURCE_DIR}/src/lib")
+SET(SCI_CLEAVER2_LIBRARY cleaver2 CACHE INTERNAL "Cleaver 2 library" FORCE)
 
 # output library
-ADD_LIBRARY(cleaver STATIC ${Cleaver_HEADER_FILES} ${Cleaver_SOURCE_FILES})
-TARGET_LINK_LIBRARIES(cleaver jsoncpp)
+ADD_LIBRARY(${SCI_CLEAVER2_LIBRARY} STATIC ${Cleaver_HEADER_FILES} ${Cleaver_SOURCE_FILES})
+TARGET_LINK_LIBRARIES(${SCI_CLEAVER2_LIBRARY} jsoncpp)
+
+set(SCI_CLEAVER2_LIBRARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/src/lib)
+set(CLEAVER2_USE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/UseCleaver2.cmake")
+
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/CMake/Cleaver2Config.cmake.in"
+  "${CMAKE_BINARY_DIR}/Cleaver2Config.cmake" @ONLY IMMEDIATE)
+#EXPORT(TARGETS ${SCI_CLEAVER2_LIBRARY} FILE Cleaver2Exports.cmake)
