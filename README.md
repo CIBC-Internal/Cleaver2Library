@@ -18,7 +18,7 @@ For documentation, please see: http://sciinstitute.github.io/cleaver.pages
 Please see http://sciinstitute.github.io/cleaver.pages/build.html
 
 #### Build Status
-[![Build Status](https://travis-ci.org/SCIInstitute/Cleaver2.svg?branch=master)](https://travis-ci.org/SCIInstitute/Cleaver2)
+[![Build Status](https://travis-ci.org/CIBC-Internal/Cleaver2Library.svg?branch=master)](https://travis-ci.org/CIBC-Internal/Cleaver2Library)
 
 ### Questions and Answers
 For help, email the testing mailing list at cleaver@sci.utah.edu.
