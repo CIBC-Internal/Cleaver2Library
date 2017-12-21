@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------------------
+#
+# Cleaver2Config.cmake - CMake configuration file for external projects.
+
+
+SET(SCI_CLEAVER2_INCLUDE "@SCI_CLEAVER2_INCLUDE@")
+SET(SCI_CLEAVER2_LIBRARY "@SCI_CLEAVER2_LIBRARY@")
+set(SCI_CLEAVER2_LIBRARY_DIR "@SCI_CLEAVER2_LIBRARY_DIR@")
+set(CLEAVER2_USE_FILE "@CLEAVER2_USE_FILE@")
