@@ -53,5 +53,4 @@ ELSE()
 ENDIF()
 
 # Build Cleaver Library
-ADD_SUBDIRECTORY(lib/jsoncpp)
 ADD_SUBDIRECTORY(lib/cleaver2)

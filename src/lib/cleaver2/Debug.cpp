@@ -43,7 +43,7 @@
 #include <algorithm>
 
 using namespace std;
-
+#if 0
 std::string catIds(std::vector<int> ids) {
   std::string result;
   for (auto id : ids) {
@@ -77,9 +77,9 @@ namespace cleaver2
 
   std::string idForEdge(HalfEdge *edge) {
     Vertex *v1 = edge->vertex;
-    Vertex *v2 = edge->mate->vertex;    
+    Vertex *v2 = edge->mate->vertex;
     if (v1->tm_v_index > v2->tm_v_index) {
-      std::swap(v1, v2);      
+      std::swap(v1, v2);
     }
     return catIds({ v1->tm_v_index, v2->tm_v_index});
   }
@@ -102,10 +102,10 @@ namespace cleaver2
     Vertex *v1 = edge->vertex;
     Vertex *v2 = edge->mate->vertex;
     double alpha1 = edge->alpha;
-    double alpha2 = edge->mate->alpha;    
+    double alpha2 = edge->mate->alpha;
     if (v1->tm_v_index > v2->tm_v_index) {
       std::swap(v1, v2);
-      std::swap(alpha1, alpha2);      
+      std::swap(alpha1, alpha2);
     }
 
     Json::Value root(Json::objectValue);
@@ -118,7 +118,7 @@ namespace cleaver2
 
     if (edge->cut && edge->cut->order() == Order::CUT) {
       // TODO(jonbronson): set a UID and add operation to create separately
-      root["cut"] = createVertexOperation(edge->cut);  
+      root["cut"] = createVertexOperation(edge->cut);
       root["cut"]["violating"] = edge->cut->violating;
     }
 
@@ -133,8 +133,8 @@ namespace cleaver2
     Vertex *v3 = face->halfEdges[2]->vertex;
 
     std::vector<Vertex*> vertexList = {v1, v2, v3};
-    std::sort(vertexList.begin(), vertexList.end(), [](Vertex* a, Vertex* b) -> bool 
-      { 
+    std::sort(vertexList.begin(), vertexList.end(), [](Vertex* a, Vertex* b) -> bool
+      {
         return (a->tm_v_index < b->tm_v_index);
       });
     v1 = vertexList[0];
@@ -185,7 +185,7 @@ namespace cleaver2
 
     if (tet->quadruple && tet->quadruple->order() == Order::QUAD) {
       // TODO(jonbronson): set a UID and add operation to create separately
-      root["quadruple"] = createVertexOperation(tet->quadruple);   
+      root["quadruple"] = createVertexOperation(tet->quadruple);
     }
 
     operations.push_back(root);
@@ -201,17 +201,17 @@ namespace cleaver2
 		HalfEdge *edges[6];
 		HalfFace *faces[4];
 		mesh->getAdjacencyListsForTet(tet, verts, edges, faces);
-		
+
 		// create this tet - marked as debug tet
 		auto operations = createTetOperations(tet, mesh, true /* debug */);
 
-		// also create tets incident to each of the 4 vertices. 
+		// also create tets incident to each of the 4 vertices.
 		for (unsigned int v = 0; v < VERTS_PER_TET; v++) {
 			auto tets = mesh->tetsAroundVertex(verts[v]);
 			for (auto incidentTet : tets) {
 				if (incidentTet != tet) {
           auto tetOperations = createTetOperations(incidentTet, mesh);
-          operations.insert(operations.end(), tetOperations.begin(), tetOperations.end());					
+          operations.insert(operations.end(), tetOperations.begin(), tetOperations.end());
 				}
 			}
 		}
@@ -220,7 +220,7 @@ namespace cleaver2
 	}
 
   Json::Value createVertexSnapOperation(
-    Vertex *vertex, const vec3 &warp_point, 
+    Vertex *vertex, const vec3 &warp_point,
     std::vector<HalfEdge*> violating_cuts,  std::vector<HalfEdge*> projected_cuts,
     std::vector<HalfFace*> violating_trips, std::vector<HalfFace*> projected_trips,
     std::vector<Tet*>      violating_quads, std::vector<Tet*>      projected_quads){
@@ -238,21 +238,21 @@ namespace cleaver2
     for (HalfEdge *edge : violating_cuts) {
       root["violating_cuts"].append(idForEdge(edge).c_str());
     }
-    root["projected_cuts"] = Json::Value(Json::arrayValue);    
+    root["projected_cuts"] = Json::Value(Json::arrayValue);
     for (HalfEdge *edge : projected_cuts) {
       Json::Value cut = Json::Value(Json::objectValue);
       cut["id"] = idForEdge(edge).c_str();
-      cut["position"] = Json::Value(Json::objectValue);      
+      cut["position"] = Json::Value(Json::objectValue);
       cut["position"]["x"] = edge->cut->pos_next().x;
       cut["position"]["y"] = edge->cut->pos_next().y;
-      cut["position"]["z"] = edge->cut->pos_next().z;      
+      cut["position"]["z"] = edge->cut->pos_next().z;
       root["projected_cuts"].append(cut);
     }
 
     // add involved triples
     root["violating_triples"] = Json::Value(Json::arrayValue);
     for (HalfFace *face : violating_trips) {
-      root["violating_triples"].append(idForFace(face).c_str());      
+      root["violating_triples"].append(idForFace(face).c_str());
     }
     root["projected_triples"] = Json::Value(Json::arrayValue);
     for (HalfFace *face : projected_trips) {
@@ -261,7 +261,7 @@ namespace cleaver2
       triple["position"] = Json::Value(Json::objectValue);
       triple["position"]["x"] = face->triple->pos_next().x;
       triple["position"]["y"] = face->triple->pos_next().y;
-      triple["position"]["z"] = face->triple->pos_next().z;      
+      triple["position"]["z"] = face->triple->pos_next().z;
       root["projected_triples"].append(triple);
     }
 
@@ -279,10 +279,11 @@ namespace cleaver2
       quadruple["position"]["x"] = tet->quadruple->pos_next().x;
       quadruple["position"]["y"] = tet->quadruple->pos_next().y;
       quadruple["position"]["z"] = tet->quadruple->pos_next().z;
-      root["projected_quadruples"].append(quadruple);      
+      root["projected_quadruples"].append(quadruple);
     }
-    
+
     return root;
   }
 
 } // namespace cleaver2
+#endif

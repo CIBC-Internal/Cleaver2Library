@@ -210,7 +210,7 @@ bool triangle_intersection(Vertex *v1, Vertex *v2, Vertex *v3, vec3 origin, vec3
       return true;
 }
 
-
+#if 0
 //-------------------------------------------------------------------
 // vertex_to_json()
 //-------------------------------------------------------------------
@@ -236,7 +236,7 @@ Json::Value vertex_to_json(Vertex *vertex) {
 // this function call. Mesh object requred for adjacency information.
 //-------------------------------------------------------------------
 Json::Value tet_to_json(Tet *tet, TetMesh *mesh, bool includeInterfaces) {
-    
+
   Json::Value root(Json::objectValue);
   root["id"] = tet->tm_index;
   root["verts"] = Json::Value(Json::arrayValue);
@@ -265,6 +265,6 @@ Json::Value tet_to_json(Tet *tet, TetMesh *mesh, bool includeInterfaces) {
   }
   return root;
 }
-
+#endif
 
 } // namespace cleaver2

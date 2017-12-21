@@ -53,7 +53,6 @@
 #include <algorithm>
 #include <exception>
 #include <stdint.h>
-#include <jsoncpp/json.h>
 #include "Util.h"
 #include "Matlab.h"
 #include "Status.h"
@@ -1153,7 +1152,7 @@ namespace cleaver2
         if (bad_tets > 0)
           debug_dump << "," << std::endl;
         bad_tets++;
-
+#if 0
         Json::Value tet = tet_to_json(t, this, false /* includeInterfaces */);
         tet["parent"] = t->parent;
         debug_dump << tet << std::endl;
@@ -1174,9 +1173,11 @@ namespace cleaver2
           << t->verts[1]->isExterior << ", "
           << t->verts[2]->isExterior << ", "
           << t->verts[3]->isExterior << "} " << std::endl;
+            #endif
       }
       // END DEBUG
-    }    
+
+    }
     debug_dump << "]}" << std::endl;
     debug_dump.close();
     status.done();

@@ -148,6 +148,7 @@ namespace cleaver2
 
   void CleaverMesherImp::recordOperations(std::string input)
   {
+    #if 0
     Json::Value root;
     Json::Reader reader;
     std::ifstream file(input, std::ifstream::binary);
@@ -161,17 +162,19 @@ namespace cleaver2
       Json::Value tet = badTets[i];
       m_tets_to_record.insert((size_t)tet["parent"].asUInt64());
     }
-    
+
     if (m_tets_to_record.size() > 0) {
       m_recorder_stream.open("recording.dump", std::ofstream::out);
       m_recorder_stream << "{" << std::endl;
       m_recorder_stream << "    operations: [" << std::endl;
       this->m_bRecordOperations = true;
     }
+    #endif
   }
 
   void CleaverMesherImp::recordTetInitialization()
   {
+    #if 0
     std::cout << "total tet count to record: " << m_bgMesh->tets.size() << std::endl;
     for(auto tet_index : m_tets_to_record) {
       std::cout << "recording tet : " << tet_index << std::endl;
@@ -180,6 +183,7 @@ namespace cleaver2
         m_recorder_stream << operation << "," << std::endl;
       }
     }
+    #endif
   }
 
   //================================================
@@ -368,7 +372,7 @@ namespace cleaver2
     bool regular,
     double alp_long,
     double alp_short)
-  {    
+  {
     if (m_bSimple) {
       return;
     }
@@ -406,7 +410,7 @@ namespace cleaver2
   //=============================================================
   // - computeSafeAlphaLength1()
   //     This method computes safe alphas to prevent a tet from
-  // collapsing along its vertex altitudes. 
+  // collapsing along its vertex altitudes.
   //=============================================================
   float CleaverMesherImp::computeSafeAlphaLength1(Tet *tet, int v)
   {
@@ -557,11 +561,11 @@ namespace cleaver2
       delete m_interfaceCalculator;
 
     if (m_bSimple) {
-      m_interfaceCalculator = new SimpleInterfaceCalculator(m_bgMesh, m_volume);  
+      m_interfaceCalculator = new SimpleInterfaceCalculator(m_bgMesh, m_volume);
     } else {
-      m_interfaceCalculator = new LinearInterfaceCalculator(m_bgMesh, m_volume);  
+      m_interfaceCalculator = new LinearInterfaceCalculator(m_bgMesh, m_volume);
     }
-    
+
 
     if (m_violationChecker)
       delete m_violationChecker;
@@ -1968,7 +1972,7 @@ namespace cleaver2
     //------------------------------------
     vertex->pos() = warp_point;
     vertex->warped = true;
-    
+
     if (m_bRecordOperations) {
       // does this snap effect the active set?
       bool shouldRecord = false;
@@ -1978,10 +1982,12 @@ namespace cleaver2
           break;
         }
       }
-      if (shouldRecord) {    
+      if (shouldRecord) {
+        #if 0
         auto operation = createVertexSnapOperation(vertex, warp_point, viol_edges, part_edges,
             viol_faces, part_faces, viol_tets, part_tets);
-        m_recorder_stream << operation << "," << std::endl;      
+        m_recorder_stream << operation << "," << std::endl;
+        #endif
       }
     }
 
