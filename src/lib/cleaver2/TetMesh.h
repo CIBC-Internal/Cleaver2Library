@@ -102,7 +102,7 @@ public:
 
     void constructEdges();
     void constructFaces();
-    void computeAngles();
+    void computeAngles(bool verbose = false);
     void computeDihedralHistograms();
     void computeBounds();
     void updateBounds(Vertex *vertex);
@@ -156,4 +156,3 @@ public:
 } // namespace cleaver2
 
 #endif // TETMESH_H
-

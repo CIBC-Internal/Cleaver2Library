@@ -317,13 +317,11 @@ namespace cleaver2
     if (verbose)
       std::cout << "Sampling Volume..." << std::endl;
 
-    Status status(m_bgMesh->verts.size());
+    Status status(m_bgMesh->verts.size(), verbose);
     // Sample Each Background Vertex
     for (unsigned int v = 0; v < m_bgMesh->verts.size(); v++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       // Get Vertex
       cleaver2::Vertex *vertex = m_bgMesh->verts[v];
 
@@ -800,12 +798,11 @@ namespace cleaver2
     //--------------------------------------
     // (For Now, Looping over ALL tets)
 
-    Status status(m_bgMesh->tets.size());
+    Status status(m_bgMesh->tets.size(), verbose);
     for (unsigned int t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
+
       cleaver2::Tet *tet = m_bgMesh->tets[t];
 
       //------------------------------
@@ -1374,12 +1371,10 @@ namespace cleaver2
     if (verbose) {
       std::cout << "preparing to examine " << m_bgMesh->verts.size() << " verts" << std::endl;
     }
-    Status status(m_bgMesh->verts.size());
+    Status status(m_bgMesh->verts.size(), verbose);
     for (unsigned int v = 0; v < m_bgMesh->verts.size(); v++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       Vertex *vertex = m_bgMesh->verts[v];            // TODO: add check for vertex->hasAdjacentCuts
       snapAndWarpForViolatedVertex(vertex);           //       to reduce workload significantly.
     }
@@ -2535,12 +2530,10 @@ namespace cleaver2
     //  Check for edge violations
     //---------------------------------------------------
     // first check triples violating edges
-    Status status(m_bgMesh->tets.size() * 5 + m_bgMesh->halfEdges.size());
+    Status status(m_bgMesh->tets.size() * 5 + m_bgMesh->halfEdges.size(), verbose);
     for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       cleaver2::HalfFace *face = &m_bgMesh->halfFaces[f];
 
       if (face->triple && face->triple->order() == Order::TRIP)
@@ -2549,9 +2542,7 @@ namespace cleaver2
     // then check quadruples violating edges
     for (unsigned int t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       cleaver2::Tet *tet = m_bgMesh->tets[t];
       if (tet->quadruple && tet->quadruple->order() == Order::QUAD)
         m_violationChecker->checkIfQuadrupleViolatesEdges(tet);
@@ -2563,9 +2554,7 @@ namespace cleaver2
     // reset evaluation flag, so we can use to avoid duplicates
     for (auto &entry : m_bgMesh->halfEdges)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       HalfEdge *edge = entry.second;    // TODO: add  redundancy checks
       snapAndWarpForViolatedEdge(edge);        //           to reduce workload.
     }
@@ -2616,12 +2605,10 @@ namespace cleaver2
     //---------------------------------------------------
     //  Apply snapping to all remaining face-triples
     //---------------------------------------------------
-    Status status(4 * m_bgMesh->tets.size());
+    Status status(4 * m_bgMesh->tets.size(), verbose);
     for (unsigned int f = 0; f < 4 * m_bgMesh->tets.size(); f++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       HalfFace *face = &m_bgMesh->halfFaces[f];  // TODO: add  redundancy checks
       snapAndWarpForViolatedFace(face);         //           to reduce workload.
     }
@@ -2637,7 +2624,6 @@ namespace cleaver2
   //===============================================================
   void CleaverMesherImp::snapAndWarpForViolatedFace(HalfFace *face)
   {
-
     std::vector<Tet*> tets = m_bgMesh->tetsAroundFace(face);
 
     for (unsigned int t = 0; t < tets.size(); t++)
@@ -3029,12 +3015,10 @@ namespace cleaver2
       std::cout << "Filling in Stencils..." << std::endl;
 
     // be safe, and remove ALL old adjacency info on tets
-    Status status(m_bgMesh->verts.size() + m_bgMesh->tets.size());
+    Status status(m_bgMesh->verts.size() + m_bgMesh->tets.size(), verbose);
     for (unsigned int v = 0; v < m_bgMesh->verts.size(); v++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       Vertex *vertex = m_bgMesh->verts[v];
       vertex->tets.clear();
       vertex->tm_v_index = -1;
@@ -3055,9 +3039,7 @@ namespace cleaver2
     //-------------------------------
     for (size_t t = 0; t < m_bgMesh->tets.size(); t++)
     {
-      if (verbose) {
-        status.printStatus();
-      }
+      status.printStatus();
       // ----------------------------------------
       // Grab Handle to Current Background Tet
       // ----------------------------------------
@@ -3182,7 +3164,7 @@ namespace cleaver2
               }
               if (pc > 1)
               {
-                std::cout << "Vertex has a Tet stored TWICE in it. Bingo." << std::endl;
+                std::cout << "Vertex has a Tet stored TWICE in it. Error." << std::endl;
                 exit(0);
               }
 
@@ -3266,9 +3248,7 @@ namespace cleaver2
 
       }
     }
-    if (verbose) {
-      status.done();
-    }
+    status.done();
 
     // mesh is now 'done'
     m_mesh = m_bgMesh;

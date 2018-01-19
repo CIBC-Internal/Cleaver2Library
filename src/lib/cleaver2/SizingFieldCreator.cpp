@@ -218,7 +218,7 @@ namespace cleaver2
     mesh_bdry.init(w, h, d);
     mesh_feature.init(w, h, d);
 
-    Status status(w*d*h);
+    Status status(w*d*h, verbose);
     for (k = 0; k < d; k++)
     {
       for (j = 0; j < h; j++)
@@ -240,13 +240,13 @@ namespace cleaver2
             }
           }
           voxel[i][j][k].mat = dom;
-          if (verbose) status.printStatus();
+          status.printStatus();
         }
       }
     }
     if (verbose) status.done();
     if (verbose) std::cout << "Finding boundary vertices..." << std::endl;
-    if (verbose) status = Status(w*h*d * 6);
+    if (verbose) status = Status(w*h*d * 6, verbose);
 
     //Find Boundary Vertices
     for (i = 0; i < w; i++)
@@ -282,17 +282,16 @@ namespace cleaver2
               if (dist < mesh_bdry.dist[i][j][k])
                 mesh_bdry.dist[i][j][k] = dist;
             }
-            if (verbose) status.printStatus();
+            status.printStatus();
           }
         }
       }
     }
-    if (verbose) status.done();
+    status.done();
 
     if (!adaptiveSurface)
     {
-      vector<Triple>::iterator it;
-      for (it = zeros.begin(); it != zeros.end(); it++)
+      for (auto it = zeros.begin(); it != zeros.end(); it++)
       {
         int i0 = (*it).index[0];
         int j0 = (*it).index[1];
@@ -304,23 +303,23 @@ namespace cleaver2
       vec3 myoffset = m_sampleFactor*m_offset;
       appendPadding(mypadding, myoffset, zeros);
     } else {
-      if (verbose) status.done();
+      status.done();
 
 
       if (verbose) printf("\tComputing the distance transform\n");
       proceed(mesh_bdry, zeros, 1, 1e6);
 
-      if (verbose) status.done();
+      status.done();
 
       //Search for discontinuity
       if (verbose)
         printf("\tSearching for discontinuity in the distance field\n");
       medialaxis.clear();
-      if (verbose) status = Status((h - 1)*(w - 1)*(d - 1) + (h - 3)*(w - 3)*(d - 3));
+      if (verbose) status = Status((h - 1)*(w - 1)*(d - 1) + (h - 3)*(w - 3)*(d - 3), verbose);
       for (i = 1; i < w; i++) {
         for (j = 1; j < h; j++) {
           for (k = 1; k < d; k++) {
-            if (verbose) status.printStatus();
+            status.printStatus();
             a = mesh_bdry.dist[i][j][k];
 
             if (a < xdist || a < ydist || a < zdist)
@@ -368,7 +367,7 @@ namespace cleaver2
       for (i = 1; i < w - 2; i++) {
         for (j = 1; j < h - 2; j++) {
           for (k = 1; k < d - 2; k++) {
-            if (verbose) status.printStatus();
+            status.printStatus();
             if (myBdry[i][j][k])
               continue;
             a = mesh_bdry.dist[i][j][k];
@@ -441,7 +440,7 @@ namespace cleaver2
           }
         }
       }
-      if (verbose) status.done();
+      status.done();
 
       //Thinning (if necessary)
       //Associate the feature size with the with the boundary voxels
@@ -453,7 +452,7 @@ namespace cleaver2
       vec3 myoffset = m_sampleFactor*m_offset;
       appendPadding(mypadding, myoffset, zeros);
     }
-    if (verbose) status.done();
+    status.done();
     if (verbose)
       printf("\tComputing the sizing field in the interior vertices\n");
     proceed(mesh_padded_feature, zeros, speed, 1e6);
@@ -467,17 +466,17 @@ namespace cleaver2
       int h = mesh_padded_feature.dist[0].size();
       int d = mesh_padded_feature.dist[0][0].size();
 
-      if (verbose) status = Status(w*h*d);
+      if (verbose) status = Status(w*h*d, verbose);
       for (int k = 0; k < d; k++) {
         for (int j = 0; j < h; j++) {
           for (int i = 0; i < w; i++) {
             mesh_padded_feature.dist[i][j][k] *= m_sizingFactor;
-            if (verbose) status.printStatus();
+            status.printStatus();
           }
         }
       }
     }
-    if (verbose) status.done();
+    status.done();
   }
 
   SizingFieldCreator::~SizingFieldCreator()

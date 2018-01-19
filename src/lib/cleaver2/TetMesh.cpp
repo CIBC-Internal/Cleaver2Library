@@ -162,7 +162,7 @@ namespace cleaver2
     if (verbose) std::cout <<
       "Fixing Vertex wind-up..." << std::endl;
     size_t count = 0;
-    Status s(tets.size());
+    Status s(tets.size(), verbose);
     std::vector<Tet*>::iterator iter = tets.begin();
     // loop over all tets in the mesh
     while(iter != tets.end()) {
@@ -1094,11 +1094,11 @@ namespace cleaver2
   }
 
 
-  void TetMesh::computeAngles()
+  void TetMesh::computeAngles(bool verbose)
   {
     double min = 180;
     double max = 0;
-    Status status(this->tets.size());
+    Status status(this->tets.size(), verbose);
     std::ofstream debug_dump("debug.dump", ofstream::out);
     debug_dump << "{ \"badtets\": [" << std::endl;
     int bad_tets = 0;
@@ -1180,7 +1180,8 @@ namespace cleaver2
     }
     debug_dump << "]}" << std::endl;
     debug_dump.close();
-    status.done();
+    if (verbose)
+      status.done();
     if (bad_tets > 0) {
       std::cout << "Errors: " << bad_tets << " degenerate tets." << std::endl;
     }
@@ -1521,7 +1522,7 @@ namespace cleaver2
       std::cerr << "Failed to create file." << std::endl;
       return;
     }
-    Status status(verts.size() + 2*tets.size());
+    Status status(verts.size() + 2*tets.size(), verbose);
 
     //--------------------------------------------------------------
     //        Write Header (128 bytes)
