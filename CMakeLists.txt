@@ -1,16 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 project(Cleaver2 LANGUAGES CXX)
 
-# Collect sources (adjust as needed)
-file(GLOB CLEAVER2_SOURCES
-  src/*.cpp
-  src/*.cxx
-  src/*.cc
+# Collect all sources under src/lib/cleaver2
+file(GLOB_RECURSE CLEAVER2_SOURCES
+  src/lib/cleaver2/*.cpp
+  src/lib/cleaver2/*.cxx
+  src/lib/cleaver2/*.cc
 )
 
-file(GLOB CLEAVER2_HEADERS
-  src/*.h
-  src/*.hpp
+file(GLOB_RECURSE CLEAVER2_HEADERS
+  src/lib/cleaver2/*.h
+  src/lib/cleaver2/*.hpp
 )
 
 # Build the library
@@ -18,7 +18,7 @@ add_library(cleaver2 ${CLEAVER2_SOURCES})
 
 # Public include path
 target_include_directories(cleaver2 PUBLIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/lib/cleaver2
 )
 
 # Ensure PIC for static builds
